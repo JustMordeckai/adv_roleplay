@@ -1,0 +1,14 @@
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\.intermediate\net5.0\adv_roleplay.deps.json
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\.intermediate\net5.0\adv_roleplay.dll
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\.intermediate\net5.0\ref\adv_roleplay.dll
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\.intermediate\net5.0\adv_roleplay.pdb
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\.intermediate\net5.0\adv_roleplay.xml
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\code\obj\Debug\net5.0\adv_roleplay.GeneratedMSBuildEditorConfig.editorconfig
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\code\obj\Debug\net5.0\adv_roleplay.AssemblyInfoInputs.cache
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\code\obj\Debug\net5.0\adv_roleplay.AssemblyInfo.cs
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\code\obj\Debug\net5.0\adv_roleplay.csproj.CoreCompileInputs.cache
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\code\obj\Debug\net5.0\adv_roleplay.csproj.CopyComplete
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\code\obj\Debug\net5.0\adv_roleplay.dll
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\code\obj\Debug\net5.0\ref\adv_roleplay.dll
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\code\obj\Debug\net5.0\adv_roleplay.pdb
+D:\Steam\steamapps\common\sbox\Addons\adv_roleplay\code\obj\Debug\net5.0\adv_roleplay.csproj.AssemblyReference.cache
