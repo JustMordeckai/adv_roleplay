@@ -19,6 +19,8 @@ public class InventoryBar : Panel
 	{
 		base.Tick();
 
+		SetClass( "open", Input.Down( InputButton.Voice ) );
+
 		var player = Local.Pawn;
 		if ( player == null ) return;
 		if ( player.Inventory == null ) return;

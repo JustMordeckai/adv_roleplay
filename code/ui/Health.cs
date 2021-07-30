@@ -8,15 +8,20 @@ public class Health : Panel
 
 	public Health()
 	{
-		Label = Add.Label("❤ ", "text" );
+		Add.Label("❤ ", "icon" );
 		Label = Add.Label("100", "value" );
 	}
 
 	public override void Tick()
 	{
+		base.Tick();
+
+		SetClass( "open", Input.Down( InputButton.Voice ) );
+
 		var player = Local.Pawn;
 		if ( player == null ) return;
 
 		Label.Text = $"{player.Health.CeilToInt()}";
+
 	}
 }

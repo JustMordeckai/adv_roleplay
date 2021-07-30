@@ -1026,7 +1026,7 @@
             Party invite has been created
             </summary>
         </member>
-        <member name="M:Sandbox.Internal.MenuTools.PackageQuery(Sandbox.Package.Type,System.String,System.String)">
+        <member name="M:Sandbox.Internal.MenuTools.PackageQuery(Sandbox.Package.Type,System.String,System.Int32,System.String)">
             <summary>
             Find package information
             </summary>

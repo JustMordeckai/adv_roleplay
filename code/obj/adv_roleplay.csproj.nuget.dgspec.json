@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "D:\\Steam\\steamapps\\common\\sbox\\Addons\\adv_roleplay\\code\\adv_roleplay.csproj",
-        "projectName": "adv_roleplay",
+        "projectName": "adv_roleplay_dev",
         "projectPath": "D:\\Steam\\steamapps\\common\\sbox\\Addons\\adv_roleplay\\code\\adv_roleplay.csproj",
         "packagesPath": "C:\\Users\\ryryg\\.nuget\\packages\\",
         "outputPath": "D:\\Steam\\steamapps\\common\\sbox\\Addons\\adv_roleplay\\code\\obj\\",

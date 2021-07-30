@@ -444,6 +444,11 @@
             Try to politely convert from a string to another type
             </summary>
         </member>
+        <member name="M:Sandbox.StringX.TryToType(System.String,System.Type,System.Object@)">
+            <summary>
+            Try to politely convert from a string to another type
+            </summary>
+        </member>
         <member name="M:Sandbox.StringX.Columnize(System.String,System.Int32,System.Boolean)">
             <summary>
             convert "string" into "string       " or "      string"

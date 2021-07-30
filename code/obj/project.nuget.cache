@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kndx6dF/WZ69nvX4+UpQzMG1i2ihIUJNJJM/NDVZIvy8CjVG/937NR+8DcGXodvrthauy33j6ZTbDbnLLdAoTg==",
+  "dgSpecHash": "mTRcVxWjsfdeVjB1pPsRvkreNNgn+MBQtbAbnRTh9JqGn14g8Olf+5R/VjWH4N2IGe2OHDOVHvMho1J8XWAhUg==",
   "success": true,
-  "projectFilePath": "D:\\Steam\\steamapps\\common\\sbox\\Addons\\adv_roleplay\\code\\adv_roleplay.csproj",
+  "projectFilePath": "D:\\Steam\\steamapps\\common\\sbox\\Addons\\adv_roleplay_dev\\code\\adv_roleplay_dev.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

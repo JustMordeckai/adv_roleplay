@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Steam\\steamapps\\common\\sbox\\Addons\\adv_roleplay\\code\\adv_roleplay.csproj",
-      "projectName": "adv_roleplay",
-      "projectPath": "D:\\Steam\\steamapps\\common\\sbox\\Addons\\adv_roleplay\\code\\adv_roleplay.csproj",
+      "projectUniqueName": "D:\\Steam\\steamapps\\common\\sbox\\Addons\\adv_roleplay_dev\\code\\adv_roleplay_dev.csproj",
+      "projectName": "adv_roleplay_dev",
+      "projectPath": "D:\\Steam\\steamapps\\common\\sbox\\Addons\\adv_roleplay_dev\\code\\adv_roleplay_dev.csproj",
       "packagesPath": "C:\\Users\\ryryg\\.nuget\\packages\\",
-      "outputPath": "D:\\Steam\\steamapps\\common\\sbox\\Addons\\adv_roleplay\\code\\obj\\",
+      "outputPath": "D:\\Steam\\steamapps\\common\\sbox\\Addons\\adv_roleplay_dev\\code\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ryryg\\AppData\\Roaming\\NuGet\\NuGet.Config",

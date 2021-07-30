@@ -50,7 +50,6 @@ partial class AdvRoleplay_Player : Player
 
 		Dress();
 
-		Inventory.Add( new PhysGun(), true );
 		Inventory.Add( new GravGun() );
 		Inventory.Add( new Tool() );
 		Inventory.Add( new Flashlight() );
