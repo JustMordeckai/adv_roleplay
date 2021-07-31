@@ -1,13 +1,11 @@
-Health
+Health 
 {
-	
-	opacity: 0;
-	&.open
+	&.open 
 	{
 		opacity: 1;
 		transform: scale( 1 );
 	}
-
+	opacity: 0;
 	position: absolute;
 	transition: all 0.5s ease-out;
 	background-color: rgba( black, 0.5 );
@@ -20,6 +18,29 @@ Health
 	padding: 0 20px;
 	align-items: center;
 }
+
+Name_Spawn {
+	height: 120px;
+	width: 120px;
+	background-color: rgba( black, 0.5 );
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX( -50% ) translateY( -50% );
+	border-radius: 15px;
+	align-items: center;
+	text-align: center;
+	font-weight: bolder;
+	color: white;
+	pointer-events: none;
+
+	&.open {
+		opacity: 1;
+		pointer-events: all;
+	}
+}
+
 
 text.title
 {
