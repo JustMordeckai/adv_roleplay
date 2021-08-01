@@ -3,10 +3,10 @@ using Sandbox.Joints;
 using System;
 using System.Linq;
 
-[Library( "Gravgun" )]
+[Library( "Hands" )]
 public partial class GravGun : Carriable
 {
-	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
+	public override string ViewModelPath => "";
 
 	private PhysicsBody holdBody;
 	private WeldJoint holdJoint;
@@ -35,9 +35,8 @@ public partial class GravGun : Carriable
 	{
 		base.Spawn();
 
-		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
+		SetModel( "" );
 
-		CollisionGroup = CollisionGroup.Weapon;
 		SetInteractsAs( CollisionLayer.Debris );
 	}
 

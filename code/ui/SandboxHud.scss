@@ -20,10 +20,9 @@ Health
 }
 
 Name_Spawn {
-	height: 120px;
-	width: 120px;
+	flex-basis;
 	background-color: rgba( black, 0.5 );
-	opacity: 0;
+	opacity: 1;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -33,11 +32,26 @@ Name_Spawn {
 	text-align: center;
 	font-weight: bolder;
 	color: white;
-	pointer-events: none;
+	pointer-events: all;
+	flex-direction: column;
+	font-size: 25px;
+	font-weight: bold;
+	font-family: poppins;
+	padding: 10px;
 
-	&.open {
-		opacity: 1;
-		pointer-events: all;
+	.space {
+		font-size: 15px;
+	}
+
+	.bp_close {
+		padding: 5px;
+		border-radius: 15px;
+		background-color: rgba( white, 0.25 );
+	}
+
+	&.close {
+		opacity: 0;
+		pointer-events: none;
 	}
 }
 

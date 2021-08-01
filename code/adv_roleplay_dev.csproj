@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
@@ -8,6 +8,10 @@
 		<LangVersion>preview</LangVersion>
 		<NoWarn>1701;1702;1591;</NoWarn>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="ui\Name_Spawn.cs~RF1b8face.TMP" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<None Update="**\*.scss" DependentUpon="%(Filename).cs" />

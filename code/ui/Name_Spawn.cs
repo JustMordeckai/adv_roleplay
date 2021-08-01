@@ -20,15 +20,18 @@ public class Name_Spawn : Panel
 		Style.AlignItems = Align.Center;
 		Style.AlignContent = Align.Center;
 
-		AddTest( "padding: 10px; text-align: center;", "Future menu for choosing the RP name that will appear when the player spawns." );
+		Add.Label( "RP Name", "text" );
+
+		AddTest( "padding: 10px; text-align: center; background-color: rgba( red, 0.5 ); border-radius: 4px; color: white;", "Your name" );
+		Add.Label( " ", "space" );
+
+		Add.Button( "Play", "bp_close", () => CloseMenu() );
 
 	}
 
-	public override void Tick()
+	void CloseMenu()
 	{
-		base.Tick();
-
-		SetClass( "open", Input.Down( InputButton.Voice ) );
+		SetClass( "close", true );
 	}
 
 	private Sandbox.UI.TextEntry AddTest( string style, string text )

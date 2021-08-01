@@ -20,7 +20,7 @@ partial class Flashlight : Weapon
 	{
 		base.Spawn();
 
-		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
+		SetModel( "models/exoria_rp/weapons/flashlight/flashlight.vmdl" );
 
 		worldLight = CreateLight();
 		worldLight.SetParent( this, "slide", new Transform( LightOffset ) );
@@ -44,7 +44,7 @@ partial class Flashlight : Weapon
 		{
 			Enabled = true,
 			DynamicShadows = true,
-			Range = 512,
+			Range = 1024,
 			Falloff = 1.0f,
 			LinearAttenuation = 0.0f,
 			QuadraticAttenuation = 1.0f,
