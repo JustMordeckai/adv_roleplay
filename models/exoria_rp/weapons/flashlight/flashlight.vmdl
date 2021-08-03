@@ -73,7 +73,7 @@
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
 						align_origin_z_type = "BoundsCenter"
-						parent_bone = ""
+						parent_bone = "root"
 						import_filter = 
 						{
 							exclude_by_default = false
@@ -94,7 +94,7 @@
 							{
 								_class = "Bone"
 								name = "hand_R"
-								origin = [ 1.0, 0.0, 4.0 ]
+								origin = [ 2.0, 0.0, 0.0 ]
 								angles = [ 0.0, 0.0, 0.0 ]
 								do_not_discard = true
 							},
