@@ -1,8 +1,15 @@
 ﻿using Sandbox;
+using Sandbox.Hooks;
+using Sandbox.UI;
+using Sandbox.UI.Construct;
+using System;
+using System.Collections.Generic;
+
 
 [Library( "adv_roleplay", Title = "Advanced Roleplay" )]
-partial class AdvRoleplay : Game
+partial class AdvRoleplay : Game 
 {
+
 	public AdvRoleplay()
 	{
 		if ( IsServer )

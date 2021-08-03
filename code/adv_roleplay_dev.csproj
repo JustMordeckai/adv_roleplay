@@ -10,10 +10,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="ui\Name_Spawn.cs~RF1b8face.TMP" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<None Update="**\*.scss" DependentUpon="%(Filename).cs" />
 		<None Update="**\*.css" DependentUpon="%(Filename).cs" />
 		<None Update="**\*.sass" DependentUpon="%(Filename).cs" />
@@ -27,10 +23,10 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<Analyzer Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.Generator.dll" />
-		<Reference Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.System.dll" />
-		<Reference Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.Engine.dll" />
-		<Reference Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.Game.dll" />
+		<Analyzer Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.Generator.dll"/>
+		<Reference Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.System.dll"/>
+		<Reference Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.Engine.dll"/>
+		<Reference Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.Game.dll"/>
 	</ItemGroup>
 
   <ItemGroup>

@@ -18,10 +18,11 @@ public partial class SandboxHud : HudEntity<RootPanel>
 		RootPanel.AddChild<KillFeed>();
 		RootPanel.AddChild<Health>();
 		RootPanel.AddChild<Name_Spawn>();
-		RootPanel.AddChild<Scoreboard<ScoreboardEntry>>();
+		RootPanel.AddChild<Scoreboard<Scoreboard_Entry>>();
 		RootPanel.AddChild<InventoryBar>();
 		RootPanel.AddChild<CurrentTool>();
 		RootPanel.AddChild<SpawnMenu>();
+		RootPanel.AddChild<Display_Name>();
 		RootPanel.AddChild<Display_Name>();
 		RootPanel.SetTemplate( "/ui/sandboxhud.html" );
 	}

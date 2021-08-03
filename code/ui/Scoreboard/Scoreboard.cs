@@ -8,12 +8,15 @@ using System.Collections.Generic;
 
 namespace Sandbox.UI
 {
-	public partial class Scoreboard<T> : Panel where T : ScoreboardEntry, new()
+	public partial class Scoreboard<T> : Panel where T : Scoreboard_Entry, new()
 	{
 		public Panel Canvas { get; protected set; }
 		Dictionary<int, T> Entries = new ();
 
 		public Panel Header { get; protected set; }
+
+		public Panel Button;
+		public bool State = false;
 
 		public Scoreboard()
 		{
@@ -32,15 +35,25 @@ namespace Sandbox.UI
 			{
 				AddPlayer( player );
 			}
+
+			Scoreboard.OnOpenScoreboard += Open;
+		}
+		public void Open()
+		{
+			if ( State == false )
+				AddClass( "open" );
+			else if ( State == true )
+				RemoveClass( "open" );
+			State = !State;
 		}
 
 		public override void Tick()
 		{
 			base.Tick();
 
-			SetClass( "open", Input.Down( InputButton.Score ) );
-		}
+			//SetClass( "open", true);
 
+		}
 
 		protected virtual void AddHeader() 
 		{
@@ -75,5 +88,21 @@ namespace Sandbox.UI
 				Entries.Remove( entry.Id );
 			}
 		}
+	}
+}
+
+
+namespace Sandbox.Hooks
+{
+	public static partial class Scoreboard
+	{
+		public static event Action OnOpenScoreboard;
+
+		[ClientCmd( "admin_scoreboard" )]
+		internal static void MessageMode()
+		{
+			OnOpenScoreboard?.Invoke();
+		}
+
 	}
 }

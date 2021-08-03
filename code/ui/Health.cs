@@ -16,7 +16,7 @@ public class Health : Panel
 	{
 		base.Tick();
 
-		SetClass( "open", Input.Down( InputButton.Voice ) );
+		SetClass( "open", Input.Down( InputButton.Score ) );
 
 		var player = Local.Pawn;
 		if ( player == null ) return;

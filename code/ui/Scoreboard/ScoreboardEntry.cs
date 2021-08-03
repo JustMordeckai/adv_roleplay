@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace Sandbox.UI
 {
-	public partial class ScoreboardEntry : Panel
+	public partial class Scoreboard_Entry : Panel
 	{
 		public PlayerScore.Entry Entry;
 
@@ -17,7 +17,7 @@ namespace Sandbox.UI
 		public Label Deaths;
 		public Label Ping;
 
-		public ScoreboardEntry()
+		public Scoreboard_Entry()
 		{
 			AddClass( "entry" );
 
