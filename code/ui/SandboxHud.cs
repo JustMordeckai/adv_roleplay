@@ -23,7 +23,7 @@ public partial class SandboxHud : HudEntity<RootPanel>
 		RootPanel.AddChild<CurrentTool>();
 		RootPanel.AddChild<SpawnMenu>();
 		RootPanel.AddChild<Display_Name>();
-		RootPanel.AddChild<Display_Name>();
+		RootPanel.AddChild<Voice_icon>();
 		RootPanel.SetTemplate( "/ui/sandboxhud.html" );
 	}
 }
