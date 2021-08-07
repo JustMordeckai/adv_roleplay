@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace Sandbox.UI
 {
-	public partial class Scoreboard<T> : Panel where T : Scoreboard_Entry, new()
+	public partial class Exrp_Scoreboard<T> : Panel where T : Exrp_Scoreboard_Entry, new()
 	{
 		public Panel Canvas { get; protected set; }
 		Dictionary<int, T> Entries = new ();
@@ -18,9 +18,9 @@ namespace Sandbox.UI
 		public Panel Button;
 		public bool State = false;
 
-		public Scoreboard()
+		public Exrp_Scoreboard()
 		{
-			StyleSheet.Load( "/ui/scoreboard/Scoreboard.scss" );
+			StyleSheet.Load( "/ui/Scoreboard/Exrp_Scoreboard.scss" );
 			AddClass( "scoreboard" );
 
 			AddHeader();
@@ -36,7 +36,7 @@ namespace Sandbox.UI
 				AddPlayer( player );
 			}
 
-			Scoreboard.OnOpenScoreboard += Open;
+			Scoreboard_Toggle.OnOpenScoreboard += Open;
 		}
 		public void Open()
 		{
@@ -50,15 +50,13 @@ namespace Sandbox.UI
 		public override void Tick()
 		{
 			base.Tick();
-
-			//SetClass( "open", true);
-
 		}
 
 		protected virtual void AddHeader() 
 		{
 			Header = Add.Panel( "header" );
 			Header.Add.Label( "Name", "name" );
+			Header.Add.Label( "Id", "id" );
 			Header.Add.Label( "Kills", "kills" );
 			Header.Add.Label( "Deaths", "deaths" );
 			Header.Add.Label( "Ping", "ping" );
@@ -94,7 +92,7 @@ namespace Sandbox.UI
 
 namespace Sandbox.Hooks
 {
-	public static partial class Scoreboard
+	public static partial class Scoreboard_Toggle
 	{
 		public static event Action OnOpenScoreboard;
 

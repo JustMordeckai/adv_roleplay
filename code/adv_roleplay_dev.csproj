@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
@@ -23,14 +23,20 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<Analyzer Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.Generator.dll"/>
-		<Reference Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.System.dll"/>
-		<Reference Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.Engine.dll"/>
-		<Reference Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.Game.dll"/>
+		<Analyzer Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.Generator.dll" />
+		<Reference Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.System.dll" />
+		<Reference Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.Engine.dll" />
+		<Reference Include="D:/Steam/steamapps/common/sbox/bin/managed/Sandbox.Game.dll" />
 	</ItemGroup>
 
   <ItemGroup>
 <ProjectReference Include="D:\Steam\steamapps\common\sbox\Addons\base\code\base.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ui\Scoreboard\Exrp_Scoreboard.scss">
+      <DependentUpon>Exrp_Scoreboard.cs</DependentUpon>
+    </None>
   </ItemGroup>
 
 </Project>
