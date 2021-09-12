@@ -1,16 +1,13 @@
 ﻿using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 public class Name_Spawn : Panel
 {
 	public Label Label;
-	Dictionary<string, Sandbox.UI.Button> Buttons;
+	Dictionary<string, Button> Buttons;
 	public Name_Spawn()
 	{
 		Buttons = new Dictionary<string, Sandbox.UI.Button>();

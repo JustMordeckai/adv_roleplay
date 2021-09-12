@@ -1,15 +1,8 @@
 ﻿using Sandbox;
-using Sandbox.Hooks;
-using Sandbox.UI;
-using Sandbox.UI.Construct;
-using System;
-using System.Collections.Generic;
-
 
 [Library( "adv_roleplay", Title = "Advanced Roleplay" )]
-partial class AdvRoleplay : Game 
+partial class AdvRoleplay : Game
 {
-
 	public AdvRoleplay()
 	{
 		if ( IsServer )
@@ -22,7 +15,7 @@ partial class AdvRoleplay : Game
 	public override void ClientJoined( Client cl )
 	{
 		base.ClientJoined( cl );
-		var player = new AdvRoleplay_Player();
+		var player = new AdvRoleplay_Player( cl );
 		player.Respawn();
 
 		cl.Pawn = player;
@@ -44,24 +37,13 @@ partial class AdvRoleplay : Game
 		var tr = Trace.Ray( owner.EyePos, owner.EyePos + owner.EyeRot.Forward * 500 )
 			.UseHitboxes()
 			.Ignore( owner )
-			.Size( 2 )
 			.Run();
 
 		var ent = new Prop();
 		ent.Position = tr.EndPos;
 		ent.Rotation = Rotation.From( new Angles( 0, owner.EyeRot.Angles().yaw, 0 ) ) * Rotation.FromAxis( Vector3.Up, 180 );
 		ent.SetModel( modelname );
-
-		// Drop to floor
-		if ( ent.PhysicsBody != null && ent.PhysicsGroup.BodyCount == 1 )
-		{
-			var p = ent.PhysicsBody.FindClosestPoint( tr.EndPos );
-
-			var delta = p - tr.EndPos;
-			ent.PhysicsBody.Position -= delta;
-			//DebugOverlay.Line( p, tr.EndPos, 10, false );
-		}
-
+		ent.Position = tr.EndPos - Vector3.Up * ent.CollisionBounds.Mins.z;
 	}
 
 	[ServerCmd( "spawn_entity" )]
@@ -102,14 +84,20 @@ partial class AdvRoleplay : Game
 		{
 			if ( basePlayer.DevController is NoclipController )
 			{
-				Log.Info( "Noclip OFF" );
+				Log.Info( "Noclip Mode Off" );
 				basePlayer.DevController = null;
 			}
 			else
 			{
-				Log.Info( "Noclip ON" );
+				Log.Info( "Noclip Mode On" );
 				basePlayer.DevController = new NoclipController();
 			}
 		}
+	}
+
+	[ClientCmd( "debug_write" )]
+	public static void Write()
+	{
+		ConsoleSystem.Run( "quit" );
 	}
 }

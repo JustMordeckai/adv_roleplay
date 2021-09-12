@@ -9,15 +9,33 @@ partial class AdvRoleplay_Player : Player
 
 	[Net] public PawnController VehicleController { get; set; }
 	[Net] public PawnAnimator VehicleAnimator { get; set; }
-	[Net] public ICamera VehicleCamera { get; set; }
-	[Net] public Entity Vehicle { get; set; }
-	[Net] public ICamera MainCamera { get; set; }
+	[Net, Predicted] public ICamera VehicleCamera { get; set; }
+	[Net, Predicted] public Entity Vehicle { get; set; }
+	[Net, Predicted] public ICamera MainCamera { get; set; }
 
 	public ICamera LastCamera { get; set; }
 
+
+	/// <summary>
+	/// The clothing container is what dresses the citizen
+	/// </summary>
+	public Clothing.Container Clothing = new();
+
+	/// <summary>
+	/// Default init
+	/// </summary>
 	public AdvRoleplay_Player()
 	{
 		Inventory = new Inventory( this );
+	}
+
+	/// <summary>
+	/// Initialize using this client
+	/// </summary>
+	public AdvRoleplay_Player( Client cl ) : this()
+	{
+		// Load clothing from client data
+		Clothing.LoadFromClient( cl );
 	}
 
 	public override void Spawn()
@@ -48,7 +66,7 @@ partial class AdvRoleplay_Player : Player
 		EnableHideInFirstPerson = true;
 		EnableShadowInFirstPerson = true;
 
-		Dress();
+		Clothing.DressEntity( this );
 
 		Inventory.Add( new GravGun() );
 		Inventory.Add( new Tool() );
@@ -225,4 +243,15 @@ partial class AdvRoleplay_Player : Player
 			break;
 		}
 	}
+
+	// TODO
+
+	//public override bool HasPermission( string mode )
+	//{
+	//	if ( mode == "noclip" ) return true;
+	//	if ( mode == "devcam" ) return true;
+	//	if ( mode == "suicide" ) return true;
+	//
+	//	return base.HasPermission( mode );
+	//	}
 }
