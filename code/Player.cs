@@ -72,6 +72,7 @@ partial class AdvRoleplay_Player : Player
 		Inventory.Add( new Tool() );
 		Inventory.Add( new Flashlight() );
 		Inventory.Add( new PhysGun(), true );
+		Inventory.Add( new Fists() );
 
 		base.Respawn();
 	}
