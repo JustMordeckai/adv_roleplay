@@ -16,13 +16,12 @@ public partial class SandboxHud : HudEntity<RootPanel>
 		RootPanel.AddChild<ChatBox>();
 		RootPanel.AddChild<VoiceList>();
 		RootPanel.AddChild<KillFeed>();
+		RootPanel.AddChild<Exrp_Scoreboard<Exrp_ScoreboardEntry>>();
 		RootPanel.AddChild<Health>();
 		RootPanel.AddChild<Name_Spawn>();
-		RootPanel.AddChild<Exrp_Scoreboard<Exrp_Scoreboard_Entry>>();
 		RootPanel.AddChild<InventoryBar>();
 		RootPanel.AddChild<CurrentTool>();
 		RootPanel.AddChild<SpawnMenu>();
-		RootPanel.AddChild<Display_Name>();
 		RootPanel.AddChild<Voice_icon>();
 		RootPanel.SetTemplate( "/ui/sandboxhud.html" );
 	}

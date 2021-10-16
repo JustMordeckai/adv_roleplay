@@ -5,36 +5,27 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sandbox.UI
 {
-	public partial class Exrp_Scoreboard<T> : Panel where T : Exrp_Scoreboard_Entry, new()
+	public partial class Exrp_Scoreboard<T> : Panel where T : Exrp_ScoreboardEntry, new()
 	{
 		public Panel Canvas { get; protected set; }
-		Dictionary<int, T> Entries = new ();
+		Dictionary<Client, T> Rows = new ();
 
 		public Panel Header { get; protected set; }
 
-		public Panel Button;
 		public bool State = false;
 
 		public Exrp_Scoreboard()
 		{
-			StyleSheet.Load( "/ui/Scoreboard/Exrp_Scoreboard.scss" );
+			StyleSheet.Load( "/ui/scoreboard/Exrp_Scoreboard.scss" );
 			AddClass( "scoreboard" );
 
 			AddHeader();
 
 			Canvas = Add.Panel( "canvas" );
-
-			PlayerScore.OnPlayerAdded += AddPlayer;
-			PlayerScore.OnPlayerUpdated += UpdatePlayer;
-			PlayerScore.OnPlayerRemoved += RemovePlayer;
-
-			foreach ( var player in PlayerScore.All )
-			{
-				AddPlayer( player );
-			}
 
 			Scoreboard_Toggle.OnOpenScoreboard += Open;
 		}
@@ -50,7 +41,31 @@ namespace Sandbox.UI
 		public override void Tick()
 		{
 			base.Tick();
+
+			//SetClass( "open", Input.Down( InputButton.Slot0 ) );
+
+			if ( !IsVisible )
+				return;
+
+			//
+			// Clients that were added
+			//
+			foreach ( var client in Client.All.Except( Rows.Keys ) )
+			{
+				var entry = AddClient( client );
+				Rows[client] = entry;
+			}
+
+			foreach ( var client in Rows.Keys.Except( Client.All ) )
+			{
+				if ( Rows.TryGetValue( client, out var row ))
+				{
+					row?.Delete();
+					Rows.Remove( client );
+				}
+			}
 		}
+
 
 		protected virtual void AddHeader() 
 		{
@@ -62,33 +77,29 @@ namespace Sandbox.UI
 			Header.Add.Label( "Ping", "ping" );
 		}
 
-		protected virtual void AddPlayer( PlayerScore.Entry entry )
+		protected virtual T AddClient( Client entry )
 		{
 			var p = Canvas.AddChild<T>();
-			p.UpdateFrom( entry );
-
-			Entries[entry.Id] = p;
+			p.Client = entry;
+			return p;
 		}
 
+		[Obsolete]
+		protected virtual void AddPlayer( PlayerScore.Entry entry )
+		{
+		}
+
+		[Obsolete]
 		protected virtual void UpdatePlayer( PlayerScore.Entry entry )
 		{
-			if ( Entries.TryGetValue( entry.Id, out var panel ) )
-			{
-				panel.UpdateFrom( entry );
-			}
 		}
 
+		[Obsolete]
 		protected virtual void RemovePlayer( PlayerScore.Entry entry )
 		{
-			if ( Entries.TryGetValue( entry.Id, out var panel ) )
-			{
-				panel.Delete();
-				Entries.Remove( entry.Id );
-			}
 		}
 	}
 }
-
 
 namespace Sandbox.Hooks
 {

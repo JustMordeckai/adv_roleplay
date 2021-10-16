@@ -27,7 +27,7 @@
 
 	.deaths, .kills, .ping, .id {
 		text-align: right;
-		min-width: 10%;
+		min-width: 5%;
 	}
 
 	.header {
@@ -47,7 +47,7 @@
 			padding: 4px;
 
 			&.me {
-				color: yellow;
+				color: darkred;
 			}
 		}
 	}

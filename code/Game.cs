@@ -1,6 +1,5 @@
 ﻿using Sandbox;
 
-[Library( "adv_roleplay", Title = "Advanced Roleplay" )]
 partial class AdvRoleplay : Game
 {
 	public AdvRoleplay()

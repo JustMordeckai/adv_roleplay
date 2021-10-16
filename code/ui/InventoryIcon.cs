@@ -13,7 +13,6 @@ public class InventoryIcon : Panel
 	{
 		Parent = parent;
 		Label = Add.Label( "empty", "item-name" );
-		Number = Add.Label( $"{i}", "slot-number" );
 	}
 
 	public void Clear()

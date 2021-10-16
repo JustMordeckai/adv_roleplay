@@ -8,12 +8,12 @@ Health {
 	position: absolute;
 	transition: all 0.5s ease-out;
 	background-color: rgba( black, 0.5 );
-	right: 40px;
-	bottom: 20px;
-	font-size: 30px;
+	right: 20px;
+	bottom: 10px;
+	font-size: 15px;
 	font-weight: bold;
 	color: white;
-	height: 60px;
+	height: 30px;
 	padding: 0 20px;
 	align-items: center;
 	border-radius: 15px;
@@ -30,12 +30,12 @@ Voice_icon {
 	position: absolute;
 	transition: all 0.5s ease-out;
 	background-color: rgba( black, 0.5 );
-	right: 250px;
-	bottom: 20px;
-	font-size: 30px;
+	right: 120px;
+	bottom: 10px;
+	font-size: 15px;
 	font-weight: bold;
 	color: white;
-	height: 60px;
+	height: 30px;
 	padding: 0 20px;
 	align-items: center;
 	border-radius: 15px;
@@ -78,35 +78,30 @@ Name_Spawn {
 }
 
 
-text.title
-{
+text {
 	font-family: Poppins;
 	font-size: 20px;
 	font-weight: bold;
 	color: white;
 	position: absolute;
 	left: 100px;
-	top: 50px;
+}
+
+text.title1 {
+
+	top: 20px;
 }
 
 text.title2 {
-	font-family: Poppins;
-	font-size: 20px;
-	font-weight: bold;
-	color: white;
-	position: absolute;
-	left: 100px;
-	top: 75px;
+
+	top: 40px;
 }
+
 text.title3 {
-	font-family: Poppins;
-	font-size: 20px;
-	font-weight: bold;
-	color: white;
-	position: absolute;
-	left: 100px;
-	top: 100px;
+
+	top: 60px;
 }
+
 
 CurrentTool
 {
@@ -155,7 +150,6 @@ rootpanel
 		background-color: rgba( #333, 0.9 );
 	}
 
-
 	&.devcamera
 	{
 		display: none;
@@ -167,7 +161,7 @@ InventoryBar
 {
 	position: absolute;
 	width: 100%;
-	bottom: 48px;
+	bottom: 20px;
 	transition: all 0.5s ease-out;
 	justify-content: center;
 	align-items: flex-end;
@@ -182,11 +176,11 @@ InventoryBar
 InventoryIcon
 {
 	width: 80px;
-	height: 80px;
+	height: 25px;
 	background-color: rgba( #222, 0.3 );
 	margin: 0px 2px;
 	position: relative;
-	transition: all 0.2s ease-in-out;
+	transition: all 0.1s ease-in-out;
 	margin-top: 10px;
 	font-family: poppins;
 
@@ -201,32 +195,16 @@ InventoryIcon
 		position: absolute;
 		bottom: 0;
 		opacity: 0.7;
-		transition: all 0.5s ease-in-out;
+		transition: all 0.1s ease-in-out;
 		text-shadow: 1px 1px 5px black;
-	}
-
-	.slot-number
-	{
-		font-size: 25px;
-		color: black;
-		font-weight: 900;
-		opacity: 0.3;
-		position: absolute;
-		top: 1px;
-		right: 5px;
 	}
 
 	&.active
 	{
 		background-color: rgba( #a8323c, 0.5 );
 		transition: all 0.1s ease-out;
-		width: 100px;
-		height: 100px;
-
-		.slot-number
-		{
-			color: #275576;
-		}
+		width: 90px;
+		height: 30px;
 
 		.item-name
 		{

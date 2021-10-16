@@ -8,9 +8,12 @@ using System.Collections.Generic;
 
 namespace Sandbox.UI
 {
-	public partial class Exrp_Scoreboard_Entry : Panel
+	public partial class Exrp_ScoreboardEntry : Panel
 	{
+		[Obsolete]
 		public PlayerScore.Entry Entry;
+
+		public Client Client;
 
 		public Label PlayerName;
 		public Label Kills;
@@ -18,7 +21,7 @@ namespace Sandbox.UI
 		public Label Ping;
 		public Label Id;
 
-		public Exrp_Scoreboard_Entry()
+		public Exrp_ScoreboardEntry()
 		{
 			AddClass( "entry" );
 
@@ -29,17 +32,43 @@ namespace Sandbox.UI
 			Ping = Add.Label( "", "ping" );
 		}
 
-		public virtual void UpdateFrom( PlayerScore.Entry entry )
+		RealTimeSince TimeSinceUpdate = 0;
+
+		public override void Tick()
 		{
-			Entry = entry;
+			base.Tick();
 
-			PlayerName.Text = entry.GetString( "name" );
-			Id.Text = entry.Get<ulong>( "steamid", 0 ).ToString();
-			Kills.Text = entry.Get<int>( "kills", 0 ).ToString();
-			Deaths.Text = entry.Get<int>( "deaths", 0 ).ToString();
-			Ping.Text = entry.Get<int>( "ping", 0 ).ToString();
+			if ( !IsVisible )
+				return;
 
-			SetClass( "me", Local.Client != null && entry.Get<ulong>( "steamid", 0 ) == Local.Client.SteamId );
+			if ( !Client.IsValid() )
+				return;
+
+			if ( TimeSinceUpdate < 0.1f )
+				return;
+
+			TimeSinceUpdate = 0;
+			UpdateData();
 		}
+
+		public virtual void UpdateData()
+		{
+			PlayerName.Text = Client.Name;
+			Id.Text = Client.SteamId.ToString();
+			Kills.Text = Client.GetInt( "kills" ).ToString();
+			Deaths.Text = Client.GetInt( "deaths" ).ToString();
+			Ping.Text = Client.Ping.ToString();
+			SetClass( "me", Client == Local.Client );
+		}
+
+		public virtual void UpdateFrom( Client client )
+		{
+			Client = client;
+			UpdateData();
+		}
+
+
+		[Obsolete( "Switch to the Client version" )]
+		public virtual void UpdateFrom( PlayerScore.Entry entry ) { }
 	}
 }
