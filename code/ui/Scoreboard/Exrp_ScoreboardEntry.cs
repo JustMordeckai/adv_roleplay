@@ -10,8 +10,6 @@ namespace Sandbox.UI
 {
 	public partial class Exrp_ScoreboardEntry : Panel
 	{
-		[Obsolete]
-		public PlayerScore.Entry Entry;
 
 		public Client Client;
 
@@ -54,7 +52,7 @@ namespace Sandbox.UI
 		public virtual void UpdateData()
 		{
 			PlayerName.Text = Client.Name;
-			Id.Text = Client.SteamId.ToString();
+			Id.Text = Client.PlayerId.ToString();
 			Kills.Text = Client.GetInt( "kills" ).ToString();
 			Deaths.Text = Client.GetInt( "deaths" ).ToString();
 			Ping.Text = Client.Ping.ToString();
@@ -66,9 +64,5 @@ namespace Sandbox.UI
 			Client = client;
 			UpdateData();
 		}
-
-
-		[Obsolete( "Switch to the Client version" )]
-		public virtual void UpdateFrom( PlayerScore.Entry entry ) { }
 	}
 }

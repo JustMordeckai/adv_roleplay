@@ -83,21 +83,6 @@ namespace Sandbox.UI
 			p.Client = entry;
 			return p;
 		}
-
-		[Obsolete]
-		protected virtual void AddPlayer( PlayerScore.Entry entry )
-		{
-		}
-
-		[Obsolete]
-		protected virtual void UpdatePlayer( PlayerScore.Entry entry )
-		{
-		}
-
-		[Obsolete]
-		protected virtual void RemovePlayer( PlayerScore.Entry entry )
-		{
-		}
 	}
 }
 

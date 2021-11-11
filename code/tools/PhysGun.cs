@@ -9,7 +9,9 @@ public partial class PhysGun : Carriable
 	public override string ViewModelPath => "models/exoria_rp/weapons/scifi_gun/final_gun.vmdl";
 
 	protected PhysicsBody holdBody;
+	protected PhysicsBody velBody;
 	protected WeldJoint holdJoint;
+	protected WeldJoint velJoint;
 
 	protected PhysicsBody heldBody;
 	protected Vector3 heldPos;
@@ -24,7 +26,7 @@ public partial class PhysGun : Carriable
 	protected virtual float LinearDampingRatio => 1.0f;
 	protected virtual float AngularFrequency => 20.0f;
 	protected virtual float AngularDampingRatio => 1.0f;
-	protected virtual float TargetDistanceSpeed => 50.0f;
+	protected virtual float TargetDistanceSpeed => 30.0f;
 	protected virtual float RotateSpeed => 0.2f;
 	protected virtual float RotateSnapAt => 45.0f;
 
@@ -161,16 +163,16 @@ public partial class PhysGun : Carriable
 			.HitLayer( CollisionLayer.Debris )
 			.Run();
 
-		if ( !tr.Hit || !tr.Entity.IsValid() || !tr.Body.IsValid() || tr.Entity.IsWorld ) return;
+		if ( !tr.Hit || !tr.Entity.IsValid() || tr.Entity.IsWorld || tr.StartedSolid ) return;
 
 		var rootEnt = tr.Entity.Root;
 		var body = tr.Body;
 
-		if ( tr.Entity.Parent.IsValid() )
+		if ( !body.IsValid() || tr.Entity.Parent.IsValid() )
 		{
 			if ( rootEnt.IsValid() && rootEnt.PhysicsGroup != null )
 			{
-				body = rootEnt.PhysicsGroup.GetBody( 0 );
+				body = (rootEnt.PhysicsGroup.BodyCount > 0 ? rootEnt.PhysicsGroup.GetBody( 0 ) : null);
 			}
 		}
 
@@ -178,9 +180,9 @@ public partial class PhysGun : Carriable
 			return;
 
 		//
-		// Don't move keyframed 
+		// Don't move keyframed, unless it's a player
 		//
-		if ( body.BodyType == PhysicsBodyType.Keyframed )
+		if ( body.BodyType == PhysicsBodyType.Keyframed && rootEnt is not Player )
 			return;
 
 		// Unfreeze
@@ -205,7 +207,10 @@ public partial class PhysGun : Carriable
 	{
 		if ( wantsToFreeze )
 		{
-			heldBody.BodyType = PhysicsBodyType.Static;
+			if ( heldBody.BodyType == PhysicsBodyType.Dynamic )
+			{
+				heldBody.BodyType = PhysicsBodyType.Static;
+			}
 
 			if ( GrabbedEntity.IsValid() )
 			{
@@ -267,6 +272,15 @@ public partial class PhysGun : Carriable
 				BodyType = PhysicsBodyType.Keyframed
 			};
 		}
+
+		if ( !velBody.IsValid() )
+		{
+			velBody = new PhysicsBody
+			{
+				BodyType = PhysicsBodyType.Dynamic,
+				EnableAutoSleeping = false
+			};
+		}
 	}
 
 	private void Deactivate()
@@ -277,6 +291,9 @@ public partial class PhysGun : Carriable
 
 			holdBody?.Remove();
 			holdBody = null;
+
+			velBody?.Remove();
+			velBody = null;
 		}
 
 		KillEffects();
@@ -324,12 +341,22 @@ public partial class PhysGun : Carriable
 		holdBody.Position = grabPos;
 		holdBody.Rotation = heldBody.Rotation;
 
+		velBody.Position = grabPos;
+		velBody.Rotation = heldBody.Rotation;
+
 		heldBody.Wake();
 		heldBody.EnableAutoSleeping = false;
 
 		holdJoint = PhysicsJoint.Weld
 			.From( holdBody )
 			.To( heldBody, heldPos )
+			.WithLinearSpring( LinearFrequency, LinearDampingRatio, 0.0f )
+			.WithAngularSpring( 0.0f, 0.0f, 0.0f )
+			.Create();
+
+		velJoint = PhysicsJoint.Weld
+			.From( holdBody )
+			.To( velBody )
 			.WithLinearSpring( LinearFrequency, LinearDampingRatio, 0.0f )
 			.WithAngularSpring( 0.0f, 0.0f, 0.0f )
 			.Create();
@@ -340,6 +367,11 @@ public partial class PhysGun : Carriable
 		if ( holdJoint.IsValid )
 		{
 			holdJoint.Remove();
+		}
+
+		if ( velJoint.IsValid )
+		{
+			velJoint.Remove();
 		}
 
 		if ( heldBody.IsValid() )
@@ -360,6 +392,21 @@ public partial class PhysGun : Carriable
 			return;
 
 		holdBody.Position = startPos + dir * holdDistance;
+
+		if ( GrabbedEntity is Player player )
+		{
+			player.Velocity = velBody.Velocity;
+			player.Position = holdBody.Position - heldPos;
+
+			var controller = player.GetActiveController();
+			if ( controller != null )
+			{
+				controller.Velocity = velBody.Velocity;
+			}
+
+			return;
+		}
+
 		holdBody.Rotation = rot * heldRot;
 
 		if ( snapAngles )
