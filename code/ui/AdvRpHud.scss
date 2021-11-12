@@ -41,65 +41,46 @@ Voice_icon {
 	border-radius: 15px;
 }
 
-Name_Spawn {
-	flex-basis;
-	background-color: rgba( black, 0.5 );
+FirstSpawn {
+	background-color: rgb(31, 31, 31);
 	opacity: 1;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translateX( -50% ) translateY( -50% );
+	border: 3px solid white;
 	border-radius: 15px;
 	align-items: center;
 	text-align: center;
 	font-weight: bolder;
 	color: white;
-	pointer-events: all;
 	flex-direction: column;
-	font-size: 25px;
 	font-weight: bold;
 	font-family: poppins;
 	padding: 10px;
+	pointer-events: all;
 
-	.space {
+	.text {
 		font-size: 15px;
+		padding: 5px;
+	}
+
+	.title {
+		font-size: 50px;
+		padding: 8px;
 	}
 
 	.bp_close {
-		padding: 5px;
+		padding: 8px;
 		border-radius: 15px;
 		background-color: rgba( white, 0.25 );
+		font-size: 25px;
 	}
 
 	&.close {
 		opacity: 0;
 		pointer-events: none;
 	}
-}
-
-
-text {
-	font-family: Poppins;
-	font-size: 20px;
-	font-weight: bold;
-	color: white;
-	position: absolute;
-	left: 100px;
-}
-
-text.title1 {
-
-	top: 20px;
-}
-
-text.title2 {
-
-	top: 40px;
-}
-
-text.title3 {
-
-	top: 60px;
 }
 
 

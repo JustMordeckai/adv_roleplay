@@ -2,27 +2,27 @@
 using Sandbox.UI;
 
 [Library]
-public partial class SandboxHud : HudEntity<RootPanel>
+public partial class AdvRpHud : HudEntity<RootPanel>
 {
-	public SandboxHud()
+	public AdvRpHud()
 	{
 		if ( !IsClient )
 			return;
 
-		RootPanel.StyleSheet.Load( "/ui/SandboxHud.scss" );
+		RootPanel.StyleSheet.Load( "/ui/AdvRpHud.scss" );
 
 		RootPanel.AddChild<NameTags>();
 		RootPanel.AddChild<CrosshairCanvas>();
-		RootPanel.AddChild<ChatBox>();
+		//RootPanel.AddChild<ChatBox>();
 		RootPanel.AddChild<VoiceList>();
 		RootPanel.AddChild<KillFeed>();
 		RootPanel.AddChild<Exrp_Scoreboard<Exrp_ScoreboardEntry>>();
 		RootPanel.AddChild<Health>();
-		RootPanel.AddChild<Name_Spawn>();
+		RootPanel.AddChild<FirstSpawn>();
 		RootPanel.AddChild<InventoryBar>();
 		RootPanel.AddChild<CurrentTool>();
 		RootPanel.AddChild<SpawnMenu>();
 		RootPanel.AddChild<Voice_icon>();
-		RootPanel.SetTemplate( "/ui/sandboxhud.html" );
+		RootPanel.SetTemplate( "/ui/AdvRpHud.html" );
 	}
 }
