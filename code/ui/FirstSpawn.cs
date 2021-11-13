@@ -21,7 +21,8 @@ public class FirstSpawn : Panel
 
 		Add.Label( "Press TAB to see Inventory Bar and Health", "text" );
 		Add.Label( "'admin_scoreboard' in the console to toggle the Scoreboard", "text" );
-		Add.Label( "Press V to see the voice chat activation icon\n ", "text" );
+		Add.Label( "Press V to see the voice chat activation icon", "text" );
+		Add.Label( "Press 1 to see Spawn Menu\n ", "text" );
 
 		Add.Button( "Play", "bp_close", () => CloseMenu() );
 
@@ -30,5 +31,6 @@ public class FirstSpawn : Panel
 	void CloseMenu()
 	{
 		SetClass( "close", true );
+		Log.Info( Local.Pawn.LocalPosition );
 	}
 }

@@ -12,7 +12,7 @@ public partial class AdvRpHud : HudEntity<RootPanel>
 		RootPanel.StyleSheet.Load( "/ui/AdvRpHud.scss" );
 
 		RootPanel.AddChild<NameTags>();
-		RootPanel.AddChild<CrosshairCanvas>();
+		//RootPanel.AddChild<CrosshairCanvas>();
 		//RootPanel.AddChild<ChatBox>();
 		RootPanel.AddChild<VoiceList>();
 		RootPanel.AddChild<KillFeed>();

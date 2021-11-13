@@ -22,13 +22,14 @@ partial class AdvRoleplay : Game
 		if ( IsClient )
 		{
 			Log.Info( "Client Loaded" );
-			Log.Info( Position );
 		}
 	}
 
 	public override void ClientJoined( Client cl )
 	{
 		base.ClientJoined( cl );
+
+		Log.Info("+ " + cl.Name);
 		var player = new AdvRoleplay_Player( cl );
 		player.Respawn();
 

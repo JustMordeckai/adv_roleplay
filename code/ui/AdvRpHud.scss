@@ -61,12 +61,12 @@ FirstSpawn {
 	pointer-events: all;
 
 	.text {
-		font-size: 15px;
+		font-size: 16px;
 		padding: 5px;
 	}
 
 	.title {
-		font-size: 50px;
+		font-size: 49px;
 		padding: 8px;
 	}
 
@@ -80,6 +80,8 @@ FirstSpawn {
 	&.close {
 		opacity: 0;
 		pointer-events: none;
+		transition: all 0.5s ease-out;
+		transform: translateX(-50%)translateY(25%);
 	}
 }
 
